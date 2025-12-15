@@ -1,37 +1,29 @@
 package ПР25;
 
-import java.util.regex.*;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class password {
     public static void main(String[] args) {
-
-        String[] testPasswords = {
-                "F032_Password",
-                "TrySpy1",
-                "smart_pass",
-                "A007"
-        };
-
-
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите пароль для проверки ");
+        String a = sc.nextLine();
         String passwordPattern = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)[A-Za-z\\d_]{8,}$";
-
-
         Pattern pattern = Pattern.compile(passwordPattern);
 
-
-        for (String password : testPasswords) {
-
-            Matcher matcher = pattern.matcher(password);
+        Matcher matcher = pattern.matcher(a);
 
 
-            boolean isValid = matcher.matches();
+        boolean isValid = matcher.matches();
 
 
-            if (isValid) {
-                System.out.println(password + " → Надёжный");
-            } else {
-                System.out.println(password + " → Слабый");
-            }
+        if (isValid) {
+            System.out.println(a + " → Надёжный");
+        } else {
+            System.out.println(a + " → Слабый");
         }
+
+
     }
 }
